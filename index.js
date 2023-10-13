@@ -51,19 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             commentInput.value = "";
           }
+          addLikeButtonListener(team.id);
         });
+  
+  
+        });
+        function addLikeButtonListener(teamId) {
+            const likeButton = document.getElementById(like-button-`${teamId}`);
+            const likesSpan = document.getElementById(likes-`${teamId}`);
+          
+            likeButton.addEventListener('click', () => {
+              let currentLikes = parseInt(likesSpan.getAttribute('data-likes'));
+              currentLikes++;
+              likesSpan.textContent = currentLikes;
+              likesSpan.setAttribute('data-likes', currentLikes);
+              
+            });
+          }
+         
       });
-  });
+ 
 
-function likeTeam(teamId) {
-    const likesSpan = document.getElementById(likes`${teamId}`);
-    let currentLikes = parseInt(likesSpan.getAttribute("data-likes"));
-    currentLikes++;
-    likesSpan.textContent = currentLikes;
-    likesSpan.setAttribute("data-likes", currentLikes);
-  }
-  
-  
-  
   
   
