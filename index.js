@@ -24,17 +24,29 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
           `;
-          teamsContainer.appendChild(infoDiv);        
+          teamsContainer.appendChild(infoDiv);      
+
           const teamName = infoDiv.querySelector(".team-name");
           const teamDetails = infoDiv.querySelector(".team-details");
           teamName.addEventListener("click", () => {
-            if (teamDetails.style.display === "none") {
-              teamDetails.style.display = "block";
-            } else {
-              teamDetails.style.display = "none";
-            }
+              if (teamDetails.style.display === "none") {
+                  teamDetails.style.display = "block";
+              } else {
+                  teamDetails.style.display = "none";
+              }
           });
-        });
+
+          // Add event listener for the like button
+          const likeButton = infoDiv.querySelector(".like-button");
+          const likesSpan = infoDiv.querySelector(likes-`${team.id}`);
+          likeButton.addEventListener('click', () => {
+              let currentLikes = parseInt(likesSpan.getAttribute('data-likes'));
+              currentLikes++;
+              likesSpan.textContent = currentLikes;
+              likesSpan.setAttribute('data-likes', currentLikes);
+          });
+      });
+        
   commentForm.addEventListener("submit", (e) => {
           e.preventDefault();
           const commentText = commentInput.value;
@@ -55,22 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
   
   
-        });
-        function addLikeButtonListener(teamId) {
-            const likeButton = document.getElementById(like-button-`${teamId}`);
-            const likesSpan = document.getElementById(likes-`${teamId}`);
-          
-            likeButton.addEventListener('click', () => {
-              let currentLikes = parseInt(likesSpan.getAttribute('data-likes'));
-              currentLikes++;
-              likesSpan.textContent = currentLikes;
-              likesSpan.setAttribute('data-likes', currentLikes);
-              
-            });
-          }
-         
+        }); 
       });
- 
+
+
+
+
 
   
   
