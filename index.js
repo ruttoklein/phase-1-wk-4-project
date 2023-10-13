@@ -16,8 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>Abbreviation: ${team.abbreviation}</p>
               <p>Conference: ${team.conference}</p>
               <p>Division: ${team.division}</p>
+              <p>Likes: <span id="likes-${team.id}" data-likes="0">0</span> 
+              <button class="like-button" onclick="likeTeam(${team.id})">♡</button>
+              </p>
               <div class="comments">
-                <!-- Display comments for each team here -->
+                
               </div>
             </div>
           `;
@@ -51,6 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
   });
+
+function likeTeam(teamId) {
+    const likesSpan = document.getElementById(likes`${teamId}`);
+    let currentLikes = parseInt(likesSpan.getAttribute("data-likes"));
+    currentLikes++;
+    likesSpan.textContent = currentLikes;
+    likesSpan.setAttribute("data-likes", currentLikes);
+  }
   
   
   
